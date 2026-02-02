@@ -39,16 +39,16 @@ class HabitRepository extends AbstractRepository
 
     public function insert(array $data = array())
     {
-        $name = $data['name'];   
-        $description = $data['description'];
-
-        // Requête construite par concaténation (vulnérable)
-        $sql = "INSERT INTO habits (user_id, name, description, created_at) VALUES (" 
-            . $data['user_id'] . ", '" 
-            . $name . "', '" 
-            . $description . "', NOW())";
-
-        $query = $this->getConnection()->query($sql);
+        $sql = "INSERT INTO habits (user_id, name, description, created_at) VALUES (:user_id, :name, :description, NOW())";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bindValue('user_id', (int)$data['user_id'], \PDO::PARAM_INT);
+        $stmt->bindValue('name', $data['name']);
+        if (!isset($data['description']) || $data['description'] === '') {
+            $stmt->bindValue('description', null, \PDO::PARAM_NULL);
+        } else {
+            $stmt->bindValue('description', $data['description']);
+        }
+        $stmt->execute();
 
         return $this->getConnection()->lastInsertId();
     }

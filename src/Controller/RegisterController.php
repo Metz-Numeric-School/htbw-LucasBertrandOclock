@@ -18,7 +18,7 @@ class RegisterController extends AbstractController
     {
         $errors = [];
 
-        if(!empty($_GET['user'])) {
+        if(!empty($_POST['user'])) {
 
             $user = $_POST['user'];
             
@@ -38,6 +38,7 @@ class RegisterController extends AbstractController
             if(count($errors) == 0) {
                 // Par défaut l'utilisateur n'est pas admin
                 $user['isadmin'] = 0;
+                $user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
 
                 // On persite les informations en BDD
                 $id = $this->userRepository->insert($user);
@@ -49,7 +50,7 @@ class RegisterController extends AbstractController
                 ];
 
                 // On redirige vers son dashboard
-                header("Location: /user/ticket");
+                header("Location: /dashboard");
                 exit;
             }
         }

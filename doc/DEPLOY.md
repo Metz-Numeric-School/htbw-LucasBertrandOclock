@@ -70,6 +70,41 @@ On utilise git tag pour versionner notre code et envoyer au vps uniquement les v
 `git push -u vps 1.0.0`
 
 
-## Méthode de déploiement
+## Méthode de déploiement AAPanel
 
-Todo...
+### Phase 1 : Mise en place du site sur AAPanel
+
+On se connecte a notre site AAPanel et installe les dépendances nécessaires  
+On vas ensuite dans Website => Add Site => on ajoute le nom de domaine voulu au format `domaine.com` et `www.domaine.com`  
+On ajoute le ftp
+On connecte la database et on récupère les info de la base créée dans le .env du vps
+Un dossier portant notre nom de dommaine sur notre vps vas etre créer dans `/www/wwwroot/` exemple : `/www/wwwroot/bloc4deploy/`  
+On execute sur notre vps la commande git :  
+`git --git-dir=/var/depot_git --work-tree=/www/wwwroot/bloc4deploy checkout -f 1.0.0`  
+qui viens placer notre nouveau site sur la branche / tag créer plus tot  
+On reviens sur l'interface AAPanel afin de passer le 'running directory' sur le dossier `public/`
+
+### Phase 2 : configuration du site
+Configuration du fichier .env sur le VPS (fait dans l'application actuel) :  
+Exemple :  
+`nano .env`  
+On ajoute dans le nano :
+```
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_DATABASE="habit_tracker"
+DB_USERNAME="habit_tracker"
+DB_PASSWORD="wYie3Wcd8iKWXTzC"
+```
+le site est accesible sur l'adresse de privé de la machine http://bertrand.dfs.lan:88/
+
+Configuration ssl autosigné
+On créer dans notre vps le ssl autosigné
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout privkey.pem \
+  -out fullchain.pem \
+  -subj "/C=FR/ST=NA/L=NA/O=bloc4deploy/OU=web/CN=www.bloc4deploy.com"`  
+
+On ajoute les 2 clés à AAPanel en utilisant les commandes cat pour les afficher
+`cat /www/ssl/bloc4deploy/privkey.pem`  
+`cat /www/ssl/bloc4deploy/fullchain.pem`  
