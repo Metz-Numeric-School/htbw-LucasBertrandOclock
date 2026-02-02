@@ -1,7 +1,7 @@
 # aaPanel access 
 
-Lien d'accès :
+Lien d'accès : https://178.251.86.104:29695/d5478884
 
-Identifiant :
+Identifiant : yet4beqz
 
-Mot de passe :
+Mot de passe : 42d1d642
