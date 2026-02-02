@@ -10,12 +10,6 @@ Répondez ici aux questions théoriques en détaillant un maxium vos réponses :
    > - Ajouter les options a notre nom de domaine (DNS, protection WHOIS, etc.) puis valider.
    > - Passer le paiement.
    >
-   > Captures d'écran à fournir :
-   >
-   > - Recherche du nom de domaine
-   > - Résultats disponibles
-   > - Panier / récapitulatif avant paiement
-   >
    > ![ovh_barre_nav](/doc/screenshots/ovh_1.png)
    > ![ovh_domaine_navigation](/doc/screenshots/ovh_2.png)
    > ![ovh_domaine_selecteur](/doc/screenshots/ovh_3.png)
