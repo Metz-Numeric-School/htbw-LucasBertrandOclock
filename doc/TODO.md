@@ -25,7 +25,7 @@ Suite à un audit effectué en amont, voici les failles et les bugs qui ont ét�
 - `config/routes.json:45` → `/habits` sans `guard`
 - `config/routes.json:50` → `/habits/create` sans `guard`
 - `config/routes.json:55` → `/api/habits` sans `guard`
-- `src/Controller/Member/HabitsController.php:71-72` + `src/Repository/HabitLogRepository.php:89-106` → IDOR (toggle sans contrôle propriétaire)
+- `src/Controller/Member/HabitsController.php:71-72` + `src/Repository/HabitLogRepository.php:89-106` -> IDOR (toggle sans contrôle propriétaire)
 
 ## 2. Injection SQL (A03:2021)
 - `src/Repository/HabitRepository.php:18` → `WHERE id = $id`

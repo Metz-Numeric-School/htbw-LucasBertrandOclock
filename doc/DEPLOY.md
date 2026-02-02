@@ -96,7 +96,7 @@ DB_DATABASE="habit_tracker"
 DB_USERNAME="habit_tracker"
 DB_PASSWORD="wYie3Wcd8iKWXTzC"
 ```
-le site est accesible sur l'adresse de privé de la machine http://bertrand.dfs.lan:88/
+le site est accesible sur l'adresse de privé de la machine http://bertrand.dfs.lan/
 
 Configuration ssl autosigné
 On créer dans notre vps le ssl autosigné
