@@ -58,6 +58,18 @@ All notable changes to this project will be documented in this file.
 - Ajout des informations utiles à AAPanel dans PANEL.md
 - Ajout des explications de déploiements dans DEPLOY.md
 ```
+### Phase 2 : Connexion du dépôt git local vers le dépôt distant
+On connecte les dépôt git en ajoutant le remote distant au local :  
+`git remote add vps root@192.168.23.139:/var/depot_git`
+
+### Phase 3 : Mise en place de l'envoie de version via git tag
+
+On utilise git tag pour versionner notre code et envoyer au vps uniquement les versions voulu
+
+`git tag 1.0.0`  
+`git push -u vps 1.0.0`
+
+
 ## Méthode de déploiement
 
 Todo...
